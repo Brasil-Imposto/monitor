@@ -1,0 +1,154 @@
+{
+ "networks": [
+  {
+   "address": "bc1qevkvnl6rvpfyyyjzk08lckz9xn3936qhp86zna",
+   "coins": {
+    "BTC": {
+     "contract": null,
+     "decimals": 8,
+     "issuer_listed": true
+    }
+   },
+   "explorer": "mempool.space",
+   "family": "bitcoin",
+   "id": "bitcoin",
+   "name": "Bitcoin",
+   "native_symbol": "BTC",
+   "node": "https://mempool.space/api/tx",
+   "tx_url": "https://mempool.space/tx/{tx}"
+  },
+  {
+   "address": "0xb947cC8445841cf40AFCA723804d06855bea7bc7",
+   "chain_id": 1,
+   "coins": {
+    "ETH": {
+     "contract": null,
+     "decimals": 18,
+     "issuer_listed": true
+    },
+    "USDC": {
+     "contract": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+     "decimals": 6,
+     "issuer_listed": true
+    },
+    "USDT": {
+     "contract": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+     "decimals": 6,
+     "issuer_listed": true
+    }
+   },
+   "explorer": "Etherscan",
+   "family": "evm",
+   "id": "ethereum",
+   "name": "Ethereum",
+   "native_symbol": "ETH",
+   "node": "https://ethereum-rpc.publicnode.com",
+   "trust_coin_id": 60,
+   "tx_url": "https://etherscan.io/tx/{tx}"
+  },
+  {
+   "add_chain": {
+    "blockExplorerUrls": [
+     "https://bscscan.com"
+    ],
+    "chainName": "BNB Smart Chain",
+    "nativeCurrency": {
+     "decimals": 18,
+     "name": "BNB",
+     "symbol": "BNB"
+    },
+    "rpcUrls": [
+     "https://bsc-dataseed.bnbchain.org"
+    ]
+   },
+   "address": "0xb947cC8445841cf40AFCA723804d06855bea7bc7",
+   "chain_id": 56,
+   "coins": {
+    "BNB": {
+     "contract": null,
+     "decimals": 18,
+     "issuer_listed": true
+    },
+    "USDC": {
+     "contract": "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d",
+     "decimals": 18,
+     "issuer_listed": false
+    },
+    "USDT": {
+     "contract": "0x55d398326f99059fF775485246999027B3197955",
+     "decimals": 18,
+     "issuer_listed": false
+    }
+   },
+   "explorer": "BscScan",
+   "family": "evm",
+   "id": "bsc",
+   "name": "BNB Smart Chain",
+   "native_symbol": "BNB",
+   "node": "https://bsc-rpc.publicnode.com",
+   "trust_coin_id": 20000714,
+   "tx_url": "https://bscscan.com/tx/{tx}"
+  },
+  {
+   "address": "FUYqFTFwvF8fgm1NmbRXAEERtRLDry1DCQfNgbZyFv8f",
+   "coins": {
+    "SOL": {
+     "contract": null,
+     "decimals": 9,
+     "issuer_listed": true
+    },
+    "USDC": {
+     "contract": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "decimals": 6,
+     "issuer_listed": true
+    },
+    "USDT": {
+     "contract": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+     "decimals": 6,
+     "issuer_listed": true
+    }
+   },
+   "explorer": "Solscan",
+   "family": "solana",
+   "id": "solana",
+   "name": "Solana",
+   "native_symbol": "SOL",
+   "tx_url": "https://solscan.io/tx/{tx}"
+  },
+  {
+   "address": "TLoXMf8yCEtRJcbR3tqidYd76f1hi4r6cU",
+   "coins": {
+    "USDT": {
+     "contract": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+     "decimals": 6,
+     "issuer_listed": true
+    }
+   },
+   "explorer": "Tronscan",
+   "family": "tron",
+   "id": "tron",
+   "name": "Tron",
+   "native_symbol": "TRX",
+   "node": "https://api.trongrid.io/wallet/gettransactioninfobyid",
+   "tx_url": "https://tronscan.org/#/transaction/{tx}"
+  },
+  {
+   "address": "rwJXvMdap5E7C49ZkfAjpeAMLd15UmEch2",
+   "coins": {
+    "XRP": {
+     "contract": null,
+     "decimals": 6,
+     "issuer_listed": true
+    }
+   },
+   "explorer": "XRPScan",
+   "family": "xrp",
+   "first_min": "1",
+   "id": "xrp-ledger",
+   "name": "XRP Ledger",
+   "native_symbol": "XRP",
+   "node": "https://xrplcluster.com",
+   "tx_url": "https://xrpscan.com/tx/{tx}"
+  }
+ ]
+}

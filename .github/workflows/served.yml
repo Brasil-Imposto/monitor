@@ -1,0 +1,53 @@
+# B1 and L1 (spec seguranca-doacoes, sections 6 and 7): the files the site serves, against the manifest GitHub recorded when it was
+# published, and the address block, against pins.json, in the form of D222 (2). Until the production batch the production site has
+# no crypto and no manifest, so this runs only by hand, and the main repository's ci runs the same check on its local build; the
+# batch adds the schedule and the default target, in one pull request here. A failed run is the alarm (D216).
+name: served
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: The site to check
+        type: choice
+        options: [production, staging]
+        default: production
+permissions: {}
+concurrency:
+  group: state
+  cancel-in-progress: false
+jobs:
+  served:
+    name: served
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # the state branch
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: state
+          path: state-branch
+      - name: The served files and the address block
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }} # reads the site repository's public deployment record and build log
+          MONITOR_STATE: state-branch/served-${{ inputs.target }}.json
+          TARGET: ${{ inputs.target }}
+        run: |
+          set +e
+          python3 checks/served.py --target "$TARGET"
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+      - name: Save the state before any alarm
+        working-directory: state-branch
+        env:
+          TARGET: ${{ inputs.target }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "monitor"   # a name, not an address: these commits only keep the state
+          git add "served-$TARGET.json"
+          git diff --cached --quiet || { git commit -q -m "served: state"; git push -q; }
+      - name: Alarm
+        if: steps.check.outputs.code != '0'
+        run: exit 1
