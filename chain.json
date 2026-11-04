@@ -1,1 +1,32 @@
-{}
+{
+ "bitcoin": {
+  "marker": 0,
+  "misses": 0,
+  "set": true
+ },
+ "bsc": {
+  "marker": 0,
+  "misses": 0,
+  "set": true
+ },
+ "ethereum": {
+  "marker": 0,
+  "misses": 0,
+  "set": true
+ },
+ "solana": {
+  "marker": "",
+  "misses": 0,
+  "set": true
+ },
+ "tron": {
+  "marker": "",
+  "misses": 0,
+  "set": true
+ },
+ "xrp-ledger": {
+  "marker": null,
+  "misses": 0,
+  "set": true
+ }
+}
