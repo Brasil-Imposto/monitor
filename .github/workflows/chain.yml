@@ -1,0 +1,44 @@
+# C1 and C5 (spec seguranca-doacoes, section 9): every 15 minutes, off the hour, any transaction leaving the five donation addresses,
+# through the free public nodes with no key. A failed run is the alarm: GitHub e-mails whoever set this schedule (D216). The state
+# lives on the branch "state", written only by these workflows; it is saved before the run fails, so each change alarms once.
+name: chain
+on:
+  schedule:
+    - cron: "11-59/15 * * * *"
+  workflow_dispatch:
+permissions: {}
+concurrency:
+  group: state
+  cancel-in-progress: false
+jobs:
+  chain:
+    name: chain
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # the state branch
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: state
+          path: state-branch
+      - name: The five addresses on their chains
+        id: check
+        env:
+          MONITOR_STATE: state-branch/chain.json
+        run: |
+          set +e
+          python3 checks/chain.py
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+      - name: Save the state before any alarm
+        working-directory: state-branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "monitor"   # a name, not an address: these commits only keep the state
+          git add chain.json
+          git diff --cached --quiet || { git commit -q -m "chain: state"; git push -q; }
+      - name: Alarm
+        if: steps.check.outputs.code != '0'
+        run: exit 1

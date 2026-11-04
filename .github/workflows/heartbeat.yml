@@ -1,0 +1,45 @@
+# The daily all-clear (spec seguranca-doacoes, section 3): at 12h UTC, 9h in Brasília, a comment on the pinned issue "Sinal de vida"
+# with the day's runs, which reaches whoever watches this repository by e-mail; no comment by 10h is the alarm. The same run adds a
+# commit to the state branch, so GitHub does not turn the schedules off for lack of activity.
+name: heartbeat
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+permissions: {}
+concurrency:
+  group: state
+  cancel-in-progress: false
+jobs:
+  heartbeat:
+    name: heartbeat
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # the state branch
+      issues: write # the comment
+      actions: read # the day's runs
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: state
+          path: state-branch
+      - name: The comment on the issue "Sinal de vida"
+        run: |
+          since=$(date -u -d '24 hours ago' +%Y-%m-%dT%H:%M:%SZ)
+          gh api "repos/$REPO/actions/runs?created=>$since&per_page=100" > runs.json
+          issue=$(gh api "repos/$REPO/issues?state=open&per_page=100" --jq '[.[] | select(.title == "Sinal de vida")][0].number')
+          python3 checks/heartbeat.py runs.json "$(date -u +%Y-%m-%d)" > comment.txt
+          gh api "repos/$REPO/issues/$issue/comments" -F body=@comment.txt > /dev/null
+      - name: A commit on the state branch, for activity
+        working-directory: state-branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "monitor"
+          date -u +%Y-%m-%dT%H:%M:%SZ > alive.txt
+          git add alive.txt && git commit -q -m "heartbeat" && git push -q

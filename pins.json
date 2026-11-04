@@ -1,0 +1,27 @@
+{
+ "about": "The project's own copy of the donation addresses and token contracts (spec seguranca-doacoes, section 7). It changes only by pull request here; the site's data/support.json must match it.",
+ "addresses": {
+  "bitcoin": "bc1qevkvnl6rvpfyyyjzk08lckz9xn3936qhp86zna",
+  "evm": "0xb947cC8445841cf40AFCA723804d06855bea7bc7",
+  "solana": "FUYqFTFwvF8fgm1NmbRXAEERtRLDry1DCQfNgbZyFv8f",
+  "tron": "TLoXMf8yCEtRJcbR3tqidYd76f1hi4r6cU",
+  "xrp": "rwJXvMdap5E7C49ZkfAjpeAMLd15UmEch2"
+ },
+ "networks": {
+  "bitcoin": "bitcoin",
+  "ethereum": "evm",
+  "bsc": "evm",
+  "solana": "solana",
+  "tron": "tron",
+  "xrp-ledger": "xrp"
+ },
+ "contracts": {
+  "ethereum/USDT": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+  "ethereum/USDC": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+  "bsc/USDT": "0x55d398326f99059fF775485246999027B3197955",
+  "bsc/USDC": "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d",
+  "solana/USDT": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+  "solana/USDC": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  "tron/USDT": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t"
+ }
+}
