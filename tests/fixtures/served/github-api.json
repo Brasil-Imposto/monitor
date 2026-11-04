@@ -1,0 +1,168 @@
+{
+ "production": {
+  "build_log": "2026-10-26T20:33:25.6215188Z ##[group]Run python3 docs/superpowers/tools/build-site.py --profile production --out _site\n2026-10-26T20:33:25.6215621Z \u001b[36;1mpython3 docs/superpowers/tools/build-site.py --profile production --out _site\u001b[0m\n",
+  "deployments": [
+   {
+    "created_at": "2026-10-26T20:33:40Z",
+    "environment": "github-pages",
+    "id": 7342916043,
+    "ref": "main",
+    "sha": "caeccba7abbd0c36b3e317314c1d541bbe83ba19"
+   },
+   {
+    "created_at": "2026-10-26T20:31:51Z",
+    "environment": "github-pages",
+    "id": 7342873202,
+    "ref": "main",
+    "sha": "0a8a1ddd35c58a49c1bcc1bbdf8e6580bd857555"
+   },
+   {
+    "created_at": "2026-10-26T20:30:03Z",
+    "environment": "github-pages",
+    "id": 7342829259,
+    "ref": "main",
+    "sha": "a2c4567bb97dbd177147dd363ce08f56db103171"
+   }
+  ],
+  "jobs": {
+   "jobs": [
+    {
+     "conclusion": "success",
+     "id": 121831027658,
+     "name": "build"
+    },
+    {
+     "conclusion": "success",
+     "id": 121831625260,
+     "name": "deploy"
+    }
+   ]
+  },
+  "run": {
+   "conclusion": "success",
+   "event": "push",
+   "head_branch": "main",
+   "head_sha": "caeccba7abbd0c36b3e317314c1d541bbe83ba19",
+   "id": 40396553272,
+   "path": ".github/workflows/pages.yml",
+   "repository": {
+    "full_name": "Brasil-Imposto/brasil-imposto.github.io"
+   }
+  },
+  "statuses": [
+   {
+    "created_at": "2026-10-26T20:33:59Z",
+    "environment_url": "https://brasil-imposto.github.io/",
+    "log_url": "https://github.com/Brasil-Imposto/brasil-imposto.github.io/actions/runs/40396553272/job/121831625260",
+    "state": "success"
+   },
+   {
+    "created_at": "2026-10-26T20:33:44Z",
+    "environment_url": "",
+    "log_url": "https://github.com/Brasil-Imposto/brasil-imposto.github.io/actions/runs/40396553272/job/121831625260",
+    "state": "in_progress"
+   },
+   {
+    "created_at": "2026-10-26T20:33:43Z",
+    "environment_url": "",
+    "log_url": "https://github.com/Brasil-Imposto/brasil-imposto.github.io/actions/runs/40396553272/job/121831625260",
+    "state": "queued"
+   },
+   {
+    "created_at": "2026-10-26T20:33:43Z",
+    "environment_url": "",
+    "log_url": "https://github.com/Brasil-Imposto/brasil-imposto.github.io/actions/runs/40396553272/job/121831625260",
+    "state": "queued"
+   },
+   {
+    "created_at": "2026-10-26T20:33:42Z",
+    "environment_url": "",
+    "log_url": "https://github.com/Brasil-Imposto/brasil-imposto.github.io/actions/runs/40396553272/job/121831625260",
+    "state": "waiting"
+   }
+  ]
+ },
+ "staging": {
+  "build_log": "2026-11-04T03:51:20.2537658Z ##[group]Run python3 docs/superpowers/tools/build-manifest.py write _site \"$(git rev-parse HEAD)\" | tee -a \"$GITHUB_STEP_SUMMARY\"\n2026-11-04T03:51:20.2538412Z \u001b[36;1mpython3 docs/superpowers/tools/build-manifest.py write _site \"$(git rev-parse HEAD)\" | tee -a \"$GITHUB_STEP_SUMMARY\"\u001b[0m\n2026-11-04T03:51:20.2569687Z ##[endgroup]\n2026-11-04T03:51:21.3362462Z 6152 files; the set's sha256: 91a08d89085ab5e20e40def060eb1f39c28c2655988ace4de28dacdaef61b2ce\n2026-11-04T03:51:21.3485486Z ##[group]Run actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa\n",
+  "deployments": [
+   {
+    "created_at": "2026-11-04T03:51:31Z",
+    "environment": "github-pages",
+    "id": 7537411849,
+    "ref": "main",
+    "sha": "bf15ec674662442d8fc9c71e64f090a4d8aa552d"
+   },
+   {
+    "created_at": "2026-11-04T01:29:31Z",
+    "environment": "github-pages",
+    "id": 7535362998,
+    "ref": "main",
+    "sha": "6f1e7a1cb1264d7a2d58d6247ac0d91a72550dff"
+   },
+   {
+    "created_at": "2026-11-01T18:21:41Z",
+    "environment": "github-pages",
+    "id": 7477111215,
+    "ref": "main",
+    "sha": "6f1e7a1cb1264d7a2d58d6247ac0d91a72550dff"
+   }
+  ],
+  "jobs": {
+   "jobs": [
+    {
+     "conclusion": "success",
+     "id": 126375694846,
+     "name": "build"
+    },
+    {
+     "conclusion": "success",
+     "id": 126376137760,
+     "name": "deploy"
+    }
+   ]
+  },
+  "run": {
+   "conclusion": "success",
+   "event": "workflow_dispatch",
+   "head_branch": "main",
+   "head_sha": "bf15ec674662442d8fc9c71e64f090a4d8aa552d",
+   "id": 41769524044,
+   "path": ".github/workflows/deploy.yml",
+   "repository": {
+    "full_name": "Brasil-Imposto/staging"
+   }
+  },
+  "statuses": [
+   {
+    "created_at": "2026-11-04T03:51:50Z",
+    "environment_url": "https://brasil-imposto.github.io/staging/",
+    "log_url": "https://github.com/Brasil-Imposto/staging/actions/runs/41769524044/job/126376137760",
+    "state": "success"
+   },
+   {
+    "created_at": "2026-11-04T03:51:35Z",
+    "environment_url": "",
+    "log_url": "https://github.com/Brasil-Imposto/staging/actions/runs/41769524044/job/126376137760",
+    "state": "in_progress"
+   },
+   {
+    "created_at": "2026-11-04T03:51:33Z",
+    "environment_url": "",
+    "log_url": "https://github.com/Brasil-Imposto/staging/actions/runs/41769524044/job/126376137760",
+    "state": "queued"
+   },
+   {
+    "created_at": "2026-11-04T03:51:33Z",
+    "environment_url": "",
+    "log_url": "https://github.com/Brasil-Imposto/staging/actions/runs/41769524044/job/126376137760",
+    "state": "queued"
+   },
+   {
+    "created_at": "2026-11-04T03:51:32Z",
+    "environment_url": "",
+    "log_url": "https://github.com/Brasil-Imposto/staging/actions/runs/41769524044/job/126376137760",
+    "state": "waiting"
+   }
+  ]
+ }
+}

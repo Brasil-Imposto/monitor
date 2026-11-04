@@ -1,0 +1,17 @@
+# The checks' own tests (spec seguranca-doacoes, section 14): each attack against recorded answers, with its control. Runs on every
+# pull request; it reads only this repository's files and needs no secret.
+name: tests
+on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  tests:
+    name: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: unittest
+        run: python3 -m unittest discover -s tests -v

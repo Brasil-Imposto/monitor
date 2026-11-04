@@ -1,5 +1,11 @@
 {
  "about": "The project's own copy of the donation addresses and token contracts (spec seguranca-doacoes, section 7). It changes only by pull request here; the site's data/support.json must match it.",
+ "address_pages": [
+  "index.html",
+  "como-ler-o-mapa.html",
+  "como-o-dinheiro-anda.html",
+  "os-3-poderes.html"
+ ],
  "addresses": {
   "bitcoin": "bc1qevkvnl6rvpfyyyjzk08lckz9xn3936qhp86zna",
   "evm": "0xb947cC8445841cf40AFCA723804d06855bea7bc7",
