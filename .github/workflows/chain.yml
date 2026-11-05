@@ -1,6 +1,7 @@
 # C1 and C5 (spec seguranca-doacoes, section 9): every 15 minutes, off the hour, any transaction leaving the five donation addresses,
 # through the free public nodes with no key. A failed run is the alarm: GitHub e-mails whoever set this schedule (D216). The state
-# lives on the branch "state", written only by these workflows; it is saved before the run fails, so each change alarms once.
+# lives on the branch "state", written only by these workflows; it is saved before the run fails, so each change alarms once. Each run
+# pings healthchecks.io at the end (D224), and an outside clock presses "Run" (workflow_dispatch); the schedule stays as a backup.
 name: chain
 on:
   schedule:
@@ -42,3 +43,20 @@ jobs:
       - name: Alarm
         if: steps.check.outputs.code != '0'
         run: exit 1
+      # The watcher (D224): healthchecks.io e-mails when this ping is late, so a monitor that stopped running is an alarm too. The plain
+      # URL on success and "/fail" on failure, as healthchecks.io's GitHub Actions page shows; the URL is a secret, because anyone with it
+      # could send a false "alive".
+      - name: Ping the watcher, success
+        if: success()
+        env:
+          HC_PING_URL: ${{ secrets.HC_PING_URL }}
+        run: |
+          test -n "$HC_PING_URL" || { echo "::error::the secret HC_PING_URL is not set"; exit 1; }
+          curl -fsS -m 10 --retry 5 -o /dev/null "$HC_PING_URL"
+      - name: Ping the watcher, failure
+        if: failure()
+        env:
+          HC_PING_URL: ${{ secrets.HC_PING_URL }}
+        run: |
+          test -n "$HC_PING_URL" || { echo "::error::the secret HC_PING_URL is not set"; exit 1; }
+          curl -fsS -m 10 --retry 5 -o /dev/null "$HC_PING_URL/fail"
