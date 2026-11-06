@@ -1,5 +1,5 @@
 # The daily all-clear (spec seguranca-doacoes, section 3): at 12h UTC, 9h in Brasília, a comment on the pinned issue "Sinal de vida"
-# with the day's runs, which reaches whoever watches this repository by e-mail; no comment by 10h is the alarm. The same run adds a
+# with the day's runs, which reaches whoever watches this repository by e-mail; no comment within the day is the alarm (D226: GitHub runs it hours late). The same run adds a
 # commit to the state branch, so GitHub does not turn the schedules off for lack of activity.
 name: heartbeat
 on:

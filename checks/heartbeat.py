@@ -1,6 +1,6 @@
 """The daily all-clear (spec seguranca-doacoes, section 3; Prometheus Operator's "Watchdog": a signal that always fires, so its absence
 is the alarm): at 9h in Brasília, one comment on the pinned issue "Sinal de vida" with the day's runs of each check and how many
-alarmed. If it does not arrive by 10h, that silence is the alarm.
+alarmed. If it does not arrive within the day, that silence is the alarm (D226: GitHub runs it hours late).
 
 Run: python3 checks/heartbeat.py <runs.json>   (prints the comment; the workflow posts it)
 """
