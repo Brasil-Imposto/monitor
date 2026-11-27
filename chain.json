@@ -6,12 +6,12 @@
  },
  "bsc": {
   "marker": 0,
-  "misses": 1,
+  "misses": 0,
   "set": true
  },
  "ethereum": {
   "marker": 0,
-  "misses": 1,
+  "misses": 0,
   "set": true
  },
  "solana": {
